@@ -64,6 +64,22 @@ export const constantRoutes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: "/aye",
+    component: Layouts,
+    redirect: "/aye",
+    children: [
+      {
+        path: "aye",
+        component: () => import("@/pages/aye/index.vue"),
+        name: "aye",
+        meta: {
+          title: "啊ye",
+          svgIcon: "dashboard"
+        }
+      }
+    ]
+  },
+  {
     path: "/demo",
     component: Layouts,
     redirect: "/demo/unocss",
@@ -73,6 +89,15 @@ export const constantRoutes: RouteRecordRaw[] = [
       elIcon: "DataBoard"
     },
     children: [
+      {
+        path: "aye-demo",
+        component: () => import("@/pages/demo/aye-demo/index.vue"),
+        name: "AyeDemo",
+        meta: {
+          title: "AyeDemo",
+          keepAlive: true
+        }
+      },
       {
         path: "unocss",
         component: () => import("@/pages/demo/unocss/index.vue"),
