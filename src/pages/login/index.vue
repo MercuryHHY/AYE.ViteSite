@@ -5,7 +5,7 @@ import { useSettingsStore } from "@/pinia/stores/settings"
 import { useUserStore } from "@/pinia/stores/user"
 import ThemeSwitch from "@@/components/ThemeSwitch/index.vue"
 import { Key, Loading, Lock, Picture, User } from "@element-plus/icons-vue"
-import { getCaptchaApi, loginApi } from "./apis"
+import { getCaptchaApi } from "./apis"
 import Owl from "./components/Owl.vue"
 import { useFocus } from "./composables/useFocus"
 
@@ -55,15 +55,20 @@ function handleLogin() {
       return
     }
     loading.value = true
-    loginApi(loginFormData).then(({ data }) => {
-      userStore.setToken(data.token)
-      router.push("/")
-    }).catch(() => {
-      createCode()
-      loginFormData.password = ""
-    }).finally(() => {
-      loading.value = false
-    })
+
+    // loginApi(loginFormData).then(({ data }) => {
+    //   userStore.setToken(data.token)
+    //   router.push("/")
+    // }).catch(() => {
+    //   createCode()
+    //   loginFormData.password = ""
+    // }).finally(() => {
+    //   loading.value = false
+    // })
+
+    userStore.setToken("token-admin")
+    router.push("/")
+    loading.value = false
   })
 }
 
