@@ -73,31 +73,35 @@ function handleUpdate(row: TableData) {
 // #endregion
 
 // #region 查
-const tableData = ref<TableData[]>([])
-const searchFormRef = ref<FormInstance | null>(null)
-const searchData = reactive({
+const tableData = ref<TableData[]>([]) // 存储表格数据，初始值为空数组
+const searchFormRef = ref<FormInstance | null>(null)// 查询表单的引用
+const searchData = reactive({ // 查询条件
   username: "",
   phone: ""
 })
 function getTableData() {
-  loading.value = true
-  getTableDataApi({
+  loading.value = true// 开始加载
+  getTableDataApi({ // 调用 API 获取数据
     currentPage: paginationData.currentPage,
     size: paginationData.pageSize,
     username: searchData.username,
     phone: searchData.phone
   }).then(({ data }) => {
-    paginationData.total = data.total
-    tableData.value = data.list
+    paginationData.total = data.total // 更新总条数
+    tableData.value = data.list // 更新表格数据
   }).catch(() => {
-    tableData.value = []
+    tableData.value = [] // 出错时清空表格数据
   }).finally(() => {
-    loading.value = false
+    loading.value = false // 结束加载
   })
 }
+
+/// 查询
 function handleSearch() {
   paginationData.currentPage === 1 ? getTableData() : (paginationData.currentPage = 1)
 }
+
+/// 重置
 function resetSearch() {
   searchFormRef.value?.resetFields()
   handleSearch()

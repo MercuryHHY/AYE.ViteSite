@@ -6,8 +6,8 @@ import { get, merge } from "lodash-es"
 
 /** 退出登录并强制刷新页面（会重定向到登录页） */
 function logout() {
-  useUserStore().logout()
-  location.reload()
+  useUserStore().logout() // 清除用户登录状态
+  location.reload() // 强制刷新页面，重定向到登录页
 }
 
 /** 创建请求实例 */
@@ -15,6 +15,7 @@ function createInstance() {
   // 创建一个 axios 实例命名为 instance
   const instance = axios.create()
   // 请求拦截器
+  // 在发送请求前，对请求配置进行处理（这里没有额外处理，直接返回 config）。
   instance.interceptors.request.use(
     // 发送之前
     config => config,
@@ -100,7 +101,7 @@ function createInstance() {
 /** 创建请求方法 */
 function createRequest(instance: AxiosInstance) {
   return <T>(config: AxiosRequestConfig): Promise<T> => {
-    const token = getToken()
+    const token = getToken()// 从缓存中获取用户的 Token。
     // 默认配置
     const defaultConfig: AxiosRequestConfig = {
       // 接口地址

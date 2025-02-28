@@ -69,11 +69,11 @@ export const constantRoutes: RouteRecordRaw[] = [
     redirect: "/aye",
     children: [
       {
-        path: "aye",
+        path: "/aye",
         component: () => import("@/pages/aye/index.vue"),
         name: "aye",
         meta: {
-          title: "啊ye",
+          title: "Aye",
           svgIcon: "dashboard"
         }
       }
