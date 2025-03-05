@@ -7,8 +7,8 @@ function initStarNotification() {
         "div",
         null,
         [
-          h("div", null, "所有源码均免费开源，如果对你有帮助，欢迎点个 Star 支持一下！"),
-          h("a", { style: "color: teal", target: "_blank", href: "https://github.com/un-pany/v3-admin-vite" }, "点击传送")
+          h("div", null, "AYE 迅捷开发框架,开源迭代中，欢迎 star"),
+          h("a", { style: "color: teal", target: "_blank", href: "https://github.com/" }, "点击传送github")
         ]
       ),
       duration: 0,
@@ -20,14 +20,14 @@ function initStarNotification() {
 function initStoreNotification() {
   setTimeout(() => {
     ElNotification({
-      title: "懒人服务？",
+      title: "我有严重的厌蠢症",
       type: "warning",
       message: h(
         "div",
         null,
         [
-          h("div", null, "不想自己动手，但想移除 TS 或其他模块？也有懒人套餐！"),
-          h("a", { style: "color: teal", target: "_blank", href: "https://github.com/un-pany/v3-admin-vite/issues/225" }, "点击查看")
+          h("div", null, "如果你什么都不想干，什么都想问，先看看医生吧"),
+          h("a", { style: "color: teal", target: "_blank", href: "https://www.pkuph.cn" }, "点击送医院")
         ]
       ),
       duration: 0,
