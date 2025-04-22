@@ -13,8 +13,8 @@ defineOptions({
 
 // #region vxe-grid
 interface RowMeta {
-  id: number
-  username: string
+  id: string
+  userName: string
   roles: string
   phone: string
   email: string
@@ -300,7 +300,7 @@ const crudStore = reactive({
       crudStore.isUpdate = true
       xModalOpt.title = "修改用户"
       // 赋值
-      xFormOpt.data.username = row.username
+      xFormOpt.data.username = row.userName
     } else {
       crudStore.isUpdate = false
       xModalOpt.title = "新增用户"
@@ -348,7 +348,7 @@ const crudStore = reactive({
   },
   /** 删除 */
   onDelete: (row: RowMeta) => {
-    const tip = `确定 <strong style="color: var(--el-color-danger);"> 删除 </strong> 用户 <strong style="color: var(--el-color-primary);"> ${row.username} </strong> ？`
+    const tip = `确定 <strong style="color: var(--el-color-danger);"> 删除 </strong> 用户 <strong style="color: var(--el-color-primary);"> ${row.userName} </strong> ？`
     const config: ElMessageBoxOptions = {
       type: "warning",
       showClose: true,
@@ -359,7 +359,7 @@ const crudStore = reactive({
       dangerouslyUseHTMLString: true
     }
     ElMessageBox.confirm(tip, "提示", config).then(() => {
-      deleteTableDataApi(row.id).then(() => {
+      deleteTableDataApi(row.id.toString()).then(() => {
         ElMessage.success("删除成功")
         crudStore.afterDelete()
         crudStore.commitQuery()
