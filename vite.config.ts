@@ -123,6 +123,7 @@ export default defineConfig(({ mode }) => {
       }),
       // 原子化 CSS
       UnoCSS(),
+
       // 自动按需导入 API
       AutoImport({
         imports: ["vue", "vue-router", "pinia"],

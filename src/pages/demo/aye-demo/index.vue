@@ -72,7 +72,7 @@ const checkedNames = ref(["Jack"])
       测试ElNotification
     </el-button>
 
-    <el-button type="primary" @click="toggleShow">
+    <el-button type="success" @click="toggleShow">
       显示/隐藏
     </el-button>
 
