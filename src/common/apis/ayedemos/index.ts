@@ -29,6 +29,7 @@ export function updateTableDataApi(data: Tables.CreateOrUpdateTableRequestData) 
 
 /** 查 */
 export function getTableDataApi(params: Tables.TableRequestData) {
+  console.log("获取表格数据:", params)
   return request<Tables.TableResponseData>({
     url: "table-data/tables",
     method: "get",

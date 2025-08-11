@@ -15,10 +15,12 @@ function test() {
 }
 
 function testElMessage() {
-  ElMessage({
-    message: "测试 alert",
-    type: "warning"
-  })
+  ElMessage(
+    {
+      message: "测试 alert",
+      type: "warning"
+    }
+  )
 }
 
 function testElNotification() {
@@ -74,6 +76,54 @@ const checkedNames = ref(["Jack"])
 
     <el-button type="success" @click="toggleShow">
       显示/隐藏
+    </el-button>
+
+    <el-button type="primary" icon="el-icon-search">
+      搜索
+    </el-button>
+
+    <el-button type="primary">
+      Primary
+    </el-button>
+
+    <el-icon :color="color">
+      <Edit />
+    </el-icon>
+
+    <div style="font-size: 20px">
+      <!-- 由于SVG图标默认不携带任何属性 -->
+      <!-- 你需要直接提供它们 -->
+      <Edit style="width: 1em; height: 1em; margin-right: 8px" @click="toggleRed" />
+      <Share style="width: 1em; height: 1em; margin-right: 8px" @click="toggleColor" />
+      <Delete style="width: 1em; height: 1em; margin-right: 8px" />
+      <Search style="width: 1em; height: 1em; margin-right: 8px" />
+    </div>
+
+    <p>
+      with extra class <b>is-loading</b>, your icon is able to rotate 360 deg in 2
+      seconds, you can also override this
+    </p>
+    <el-icon :size="20">
+      <Edit />
+    </el-icon>
+
+    <el-icon color="#409efc" class="no-inherit">
+      <Share />
+    </el-icon>
+
+    <el-icon>
+      <Delete />
+    </el-icon>
+
+    <el-icon class="is-loading">
+      <Loading />
+    </el-icon>
+
+    <el-button type="primary">
+      <el-icon style="vertical-align: middle">
+        <Search />
+      </el-icon>
+      <span style="vertical-align: middle"> Search </span>
     </el-button>
 
     <p>

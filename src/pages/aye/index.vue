@@ -87,10 +87,14 @@ function getTableData() {
     userName: searchData.username,
     phone: searchData.phone
   }).then(({ data }) => {
+    ElMessage.info("获取表格数据成功")
+    console.log("API 原始响应:", data)
     paginationData.total = data.total // 更新总条数
     tableData.value = data.list // 更新表格数据
-  }).catch(() => {
+    console.log("获取表格数据成功", tableData.value)
+  }).catch((error) => {
     tableData.value = [] // 出错时清空表格数据
+    console.error(`获取表格数据失败: ${error.message.toString()}`)
   }).finally(() => {
     loading.value = false // 结束加载
   })

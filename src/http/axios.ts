@@ -29,6 +29,9 @@ function createInstance() {
     (response) => {
       // apiData 是 api 返回的数据
       const apiData = response.data
+
+      console.log("apiData", apiData)
+
       // 二进制数据则直接返回
       const responseType = response.request?.responseType
       if (responseType === "blob" || responseType === "arraybuffer") return apiData
@@ -45,7 +48,7 @@ function createInstance() {
           case 401:
             return logout()
           default:
-            ElMessage.error(message || "Error")
+            ElMessage.error(message || "返回的数据中有 error 字段，说明是错误响应 :Error")
             return Promise.reject(new Error(message || "Error"))
         }
       }
@@ -64,17 +67,17 @@ function createInstance() {
 
       switch (code) {
         case 0:
-          // 本系统采用 code === 0 来表示没有业务错误
-          return apiData
         case 200:
+        case "Success":
           // 200 和0一样 也代表业务成功(为了兼容一些后端框架)
           return apiData
+
         case 401:
           // Token 过期时
           return logout()
         default:
           // 不是正确的 code
-          ElMessage.error(apiData.message || "Error")
+          ElMessage.error(apiData.message || `Error :  不是正确的 code  {code: ${code}}`)
           return Promise.reject(new Error("Error"))
       }
     },

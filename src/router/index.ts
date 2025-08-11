@@ -12,6 +12,7 @@ const Layouts = () => import("@/layouts/index.vue")
  */
 export const constantRoutes: RouteRecordRaw[] = [
   {
+    // 重定向路由
     path: "/redirect",
     component: Layouts,
     meta: {
@@ -248,6 +249,25 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         }
       }
     ]
+  },
+
+  //* * 示例：字典数据动态路由 **
+  {
+    path: "/dictionaries",
+    component: Layouts,
+    redirect: "/dictionaries",
+    children: [
+      {
+        path: "/dictionaries",
+        component: () => import("@/pages/dictionaries/index.vue"),
+        name: "Dictionaries",
+        meta: {
+          title: "字典表",
+          svgIcon: "dashboard"
+        }
+      }
+    ]
+
   }
 ]
 
